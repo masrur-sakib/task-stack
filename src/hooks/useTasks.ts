@@ -1,15 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
-import { taskApi } from '@/services/api';
+import { useAppStore } from '@/store/useAppStore';
 
 export function useTasks(projectId?: string) {
-  return useQuery({
-    queryKey: ['tasks', projectId],
-    queryFn: taskApi.getAll,
-    staleTime: 5 * 60 * 1000,
-    select: (data) =>
-      projectId
-        ? data.data.filter((t) => t.projectId === projectId)
-        : data.data,
-    enabled: !!projectId,
-  });
+  const tasks = useAppStore((s) => s.tasks);
+
+  const filtered = projectId
+    ? tasks.filter((t) => t.projectId === projectId)
+    : tasks;
+
+  return {
+    data: filtered,
+    isLoading: false,
+    isError: false,
+  };
 }

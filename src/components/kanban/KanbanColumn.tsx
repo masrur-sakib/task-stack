@@ -1,6 +1,8 @@
+import { useRef, useState } from 'react';
 import type { Task, TaskStatus } from '@/types';
 import { TaskCard } from './TaskCard';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { useAppStore } from '@/store/useAppStore';
 
 const COLUMN_CONFIG: Record<
   TaskStatus,
@@ -26,10 +28,45 @@ interface Props {
 
 export function KanbanColumn({ status, tasks }: Props) {
   const config = COLUMN_CONFIG[status];
+  const updateTaskStatus = useAppStore((s) => s.updateTaskStatus);
+  const [isDragOver, setIsDragOver] = useState(false);
+  const dragCounter = useRef(0); // tracks how deep into children we are
+
+  function handleDragEnter(e: React.DragEvent) {
+    e.preventDefault();
+    dragCounter.current += 1;
+    if (dragCounter.current === 1) setIsDragOver(true);
+  }
+
+  function handleDragLeave(e: React.DragEvent) {
+    e.preventDefault();
+    dragCounter.current -= 1;
+    if (dragCounter.current === 0) setIsDragOver(false); // only hides when truly leaving the column
+  }
+
+  function handleDragOver(e: React.DragEvent) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  }
+
+  function handleDrop(e: React.DragEvent) {
+    e.preventDefault();
+    dragCounter.current = 0; // reset counter on drop
+    setIsDragOver(false);
+    const taskId = e.dataTransfer.getData('taskId');
+    if (taskId) updateTaskStatus(taskId, status);
+  }
 
   return (
     <div
-      className={`flex flex-col bg-gray-50 rounded-2xl border-t-4 ${config.accent} flex-1 min-w-[280px] max-w-sm`}
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+      className={`flex flex-col rounded-2xl border-t-4 flex-1 min-w-[280px] max-w-sm
+        transition-colors duration-150
+        ${config.accent}
+        ${isDragOver ? 'bg-blue-50 ring-2 ring-blue-300 ring-inset' : 'bg-gray-50'}`}
     >
       {/* Header */}
       <div className='flex items-center justify-between px-4 py-3'>
@@ -44,9 +81,16 @@ export function KanbanColumn({ status, tasks }: Props) {
         </span>
       </div>
 
+      {/* Drop zone hint */}
+      {isDragOver && (
+        <div className='mx-3 mb-2 border-2 border-dashed border-blue-300 rounded-xl py-4 text-center text-xs text-blue-400'>
+          Drop here
+        </div>
+      )}
+
       {/* Cards */}
       <div className='flex-1 overflow-y-auto px-3 pb-3 space-y-3'>
-        {tasks.length === 0 ? (
+        {tasks.length === 0 && !isDragOver ? (
           <EmptyState message='No tasks here' />
         ) : (
           tasks.map((task) => <TaskCard key={task.id} task={task} />)

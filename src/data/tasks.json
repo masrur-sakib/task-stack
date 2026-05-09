@@ -1,0 +1,172 @@
+{
+  "success": true,
+  "responseCode": 200,
+  "data": [
+    {
+      "id": "task_001",
+      "title": "Design donation form UI",
+      "status": "todo",
+      "projectId": "proj_001",
+      "priority": "high",
+      "createdAt": "2026-04-10T09:00:00Z"
+    },
+    {
+      "id": "task_002",
+      "title": "Integrate payment gateway",
+      "status": "inprogress",
+      "projectId": "proj_001",
+      "priority": "high",
+      "createdAt": "2026-04-10T10:30:00Z"
+    },
+    {
+      "id": "task_003",
+      "title": "Write donation confirmation emails",
+      "status": "done",
+      "projectId": "proj_001",
+      "priority": "medium",
+      "createdAt": "2026-04-10T11:00:00Z"
+    },
+    {
+      "id": "task_004",
+      "title": "Setup campaign analytics",
+      "status": "todo",
+      "projectId": "proj_001",
+      "priority": "low",
+      "createdAt": "2026-04-10T12:00:00Z"
+    },
+    {
+      "id": "task_005",
+      "title": "Build product listing page",
+      "status": "done",
+      "projectId": "proj_002",
+      "priority": "high",
+      "createdAt": "2026-04-11T08:00:00Z"
+    },
+    {
+      "id": "task_006",
+      "title": "Implement order management",
+      "status": "inprogress",
+      "projectId": "proj_002",
+      "priority": "high",
+      "createdAt": "2026-04-11T09:00:00Z"
+    },
+    {
+      "id": "task_007",
+      "title": "Setup API service layer",
+      "status": "todo",
+      "projectId": "proj_002",
+      "priority": "medium",
+      "createdAt": "2026-04-11T11:45:00Z"
+    },
+    {
+      "id": "task_008",
+      "title": "Design admin dashboard layout",
+      "status": "done",
+      "projectId": "proj_002",
+      "priority": "medium",
+      "createdAt": "2026-04-11T13:00:00Z"
+    },
+    {
+      "id": "task_009",
+      "title": "Implement authentication flow",
+      "status": "inprogress",
+      "projectId": "proj_003",
+      "priority": "high",
+      "createdAt": "2026-04-12T08:00:00Z"
+    },
+    {
+      "id": "task_010",
+      "title": "Build task creation modal",
+      "status": "todo",
+      "projectId": "proj_003",
+      "priority": "medium",
+      "createdAt": "2026-04-12T09:30:00Z"
+    },
+    {
+      "id": "task_011",
+      "title": "Setup project database schema",
+      "status": "done",
+      "projectId": "proj_003",
+      "priority": "high",
+      "createdAt": "2026-04-12T10:00:00Z"
+    },
+    {
+      "id": "task_012",
+      "title": "Create course upload interface",
+      "status": "todo",
+      "projectId": "proj_004",
+      "priority": "high",
+      "createdAt": "2026-04-13T08:00:00Z"
+    },
+    {
+      "id": "task_013",
+      "title": "Build student enrollment flow",
+      "status": "inprogress",
+      "projectId": "proj_004",
+      "priority": "medium",
+      "createdAt": "2026-04-13T09:00:00Z"
+    },
+    {
+      "id": "task_014",
+      "title": "Implement progress tracking",
+      "status": "todo",
+      "projectId": "proj_004",
+      "priority": "medium",
+      "createdAt": "2026-04-13T10:00:00Z"
+    },
+    {
+      "id": "task_015",
+      "title": "Design certificate generation",
+      "status": "done",
+      "projectId": "proj_004",
+      "priority": "low",
+      "createdAt": "2026-04-13T11:00:00Z"
+    },
+    {
+      "id": "task_016",
+      "title": "Setup stock alert system",
+      "status": "todo",
+      "projectId": "proj_005",
+      "priority": "high",
+      "createdAt": "2026-04-14T08:00:00Z"
+    },
+    {
+      "id": "task_017",
+      "title": "Build warehouse location map",
+      "status": "inprogress",
+      "projectId": "proj_005",
+      "priority": "medium",
+      "createdAt": "2026-04-14T09:00:00Z"
+    },
+    {
+      "id": "task_018",
+      "title": "Implement barcode scanner",
+      "status": "done",
+      "projectId": "proj_005",
+      "priority": "high",
+      "createdAt": "2026-04-14T10:00:00Z"
+    },
+    {
+      "id": "task_019",
+      "title": "Create inventory reports",
+      "status": "todo",
+      "projectId": "proj_005",
+      "priority": "low",
+      "createdAt": "2026-04-14T11:00:00Z"
+    },
+    {
+      "id": "task_020",
+      "title": "Integrate supplier API",
+      "status": "inprogress",
+      "projectId": "proj_005",
+      "priority": "medium",
+      "createdAt": "2026-04-14T12:00:00Z"
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "limit": 20,
+    "total": 20,
+    "totalPages": 1
+  }
+}

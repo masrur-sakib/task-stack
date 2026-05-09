@@ -1,15 +1,11 @@
 import axios from 'axios';
 import type { ApiResponse, Project, Task } from '@/types';
 
-const BASE_URL = 'https://mf-tech.free.beeceptor.com/api/v1';
-
 export const apiClient = axios.create({
-  baseURL: BASE_URL,
   timeout: 10_000,
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Request interceptor — attach auth token if present
 apiClient.interceptors.request.use((config) => {
   const token =
     typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
@@ -17,7 +13,6 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
-// Response interceptor — global error handler
 apiClient.interceptors.response.use(
   (res) => res,
   (error) => {
@@ -31,10 +26,18 @@ apiClient.interceptors.response.use(
 
 export const projectApi = {
   getAll: () =>
-    apiClient.get<ApiResponse<Project>>('/project-list').then((r) => r.data),
+    apiClient
+      .get<
+        ApiResponse<Project>
+      >('https://api.mockfly.dev/mocks/952d7413-744d-4aee-b2b0-e2cdea4cf12e/api/v1/projects')
+      .then((r) => r.data),
 };
 
 export const taskApi = {
   getAll: () =>
-    apiClient.get<ApiResponse<Task>>('/task-list').then((r) => r.data),
+    apiClient
+      .get<
+        ApiResponse<Task>
+      >('https://mf-tech.free.beeceptor.com/api/v1/task-list')
+      .then((r) => r.data),
 };

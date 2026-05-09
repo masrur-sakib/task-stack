@@ -4,7 +4,6 @@ import type { TaskStatus } from '@/types';
 import { useTasks } from '@/hooks/useTasks';
 import { useAppStore } from '@/store/useAppStore';
 import { KanbanColumn } from './KanbanColumn';
-import { Spinner } from '@/components/ui/Spinner';
 
 const STATUSES: TaskStatus[] = ['todo', 'inprogress', 'done'];
 
@@ -33,13 +32,7 @@ export function KanbanBoard() {
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className='flex-1 flex items-center justify-center'>
-        <Spinner size='lg' />
-      </div>
-    );
-  }
+  if (isLoading) return null;
 
   if (isError) {
     return (
